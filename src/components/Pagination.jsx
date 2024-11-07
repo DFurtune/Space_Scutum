@@ -8,6 +8,11 @@ const Pagination = ({
 }) => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
+  const pageNumbers = Array.from(
+    { length: totalPages },
+    (_, index) => index + 1
+  );
+
   return (
     <div className="pagination">
       <button
@@ -16,13 +21,13 @@ const Pagination = ({
       >
         Previous
       </button>
-      {Array.from({ length: totalPages }, (_, index) => (
+      {pageNumbers.map((page) => (
         <button
-          key={index + 1}
-          className={currentPage === index + 1 ? "active" : ""}
-          onClick={() => onPageChange(index + 1)}
+          key={page}
+          className={currentPage === page ? "active" : ""}
+          onClick={() => onPageChange(page)}
         >
-          {index + 1}
+          {page}
         </button>
       ))}
       <button
