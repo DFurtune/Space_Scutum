@@ -1,15 +1,17 @@
-import React from 'react';
-import TodoItem from './TodoItem';
+import React from "react";
+import TodoItem from "./TodoItem";
 
 const TodoList = ({ todos, setTodos }) => {
   const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
   };
 
   const editTodo = (id, newTitle) => {
-    setTodos(
-      todos.map((todo) => (todo.id === id ? { ...todo, title: newTitle } : todo))
+    const updatedTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, title: newTitle } : todo
     );
+    setTodos(updatedTodos);
   };
 
   return (
