@@ -20,6 +20,11 @@ const App = () => {
   const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
   const currentTodos = todos.slice(indexOfFirstTodo, indexOfLastTodo);
 
+  const handleUpdateTodos = (updatedTodos) => {
+    setTodos(updatedTodos);
+    setCurrentPage(1);
+  };
+
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
@@ -27,7 +32,7 @@ const App = () => {
   return (
     <div>
       <h1>TODO List</h1>
-      <TodoList todos={currentTodos} setTodos={setTodos} />
+      <TodoList todos={currentTodos} setTodos={handleUpdateTodos} />
       <Pagination
         totalItems={todos.length}
         itemsPerPage={todosPerPage}
